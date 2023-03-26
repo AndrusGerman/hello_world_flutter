@@ -9,7 +9,6 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 0;
-  final double defaultSpace = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class _CounterScreenState extends State<CounterScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             onPressed: () {
@@ -42,7 +41,6 @@ class _CounterScreenState extends State<CounterScreen> {
             },
             child: const Icon(Icons.exposure_plus_1_outlined),
           ),
-          SizedBox(width: defaultSpace),
           FloatingActionButton(
             onPressed: () {
               counter = 0;
@@ -50,7 +48,6 @@ class _CounterScreenState extends State<CounterScreen> {
             },
             child: const Icon(Icons.restart_alt_outlined),
           ),
-          SizedBox(width: defaultSpace),
           FloatingActionButton(
             onPressed: () {
               counter--;
