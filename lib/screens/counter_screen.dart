@@ -33,9 +33,10 @@ class _CounterScreenState extends State<CounterScreen> {
 
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() {
-          counter++;
-        }),
+        onPressed: () {
+           counter++;
+           setState(() {});
+        },
         child: const Icon(Icons.add),
       ),
     );
