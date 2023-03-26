@@ -10,17 +10,17 @@ class CounterScreen extends StatefulWidget {
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 0;
 
-  void increaseFn() {
+  void increase() {
     counter++;
     setState(() {});
   }
 
-  void decreaseFn() {
+  void decrease() {
     counter--;
     setState(() {});
   }
 
-  void resetFn() {
+  void reset() {
     counter++;
     setState(() {});
   }
@@ -47,9 +47,9 @@ class _CounterScreenState extends State<CounterScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CustomActionButtons(
-        increaseFn: increaseFn,
-        resetFn: resetFn,
-        decreaseFn: decreaseFn,
+        increaseFn: increase,
+        resetFn: reset,
+        decreaseFn: decrease,
       ),
     );
   }
