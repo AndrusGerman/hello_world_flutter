@@ -10,6 +10,21 @@ class CounterScreen extends StatefulWidget {
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 0;
 
+  void increaseFn() {
+    counter++;
+    setState(() {});
+  }
+
+  void decreaseFn() {
+    counter--;
+    setState(() {});
+  }
+
+  void resetFn() {
+    counter++;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     const fontSize30 = TextStyle(
@@ -24,30 +39,52 @@ class _CounterScreenState extends State<CounterScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Clicks counter', style: fontSize30),
-            Text('0', style: fontSize30),
+          children: [
+            const Text('Clicks counter', style: fontSize30),
+            Text('$counter', style: fontSize30),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            onPressed: ()=> setState(() =>counter++),
-            child: const Icon(Icons.exposure_plus_1_outlined),
-          ),
-          FloatingActionButton(
-            onPressed: ()=> setState(() =>counter =0),
-            child: const Icon(Icons.restart_alt_outlined),
-          ),
-          FloatingActionButton(
-            onPressed: ()=> setState(() =>counter--),
-            child: const Icon(Icons.exposure_minus_1_outlined),
-          ),
-        ],
+      floatingActionButton: CustomActionButtons(
+        increaseFn: increaseFn,
+        resetFn: resetFn,
+        decreaseFn: decreaseFn,
       ),
+    );
+  }
+}
+
+class CustomActionButtons extends StatelessWidget {
+  final Function increaseFn;
+  final Function decreaseFn;
+  final Function resetFn;
+
+  const CustomActionButtons({
+    super.key,
+    required this.increaseFn,
+    required this.decreaseFn,
+    required this.resetFn,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        FloatingActionButton(
+          onPressed: increaseFn,
+          child: const Icon(Icons.exposure_plus_1_outlined),
+        ),
+        FloatingActionButton(
+          onPressed: resetFn,
+          child: const Icon(Icons.restart_alt_outlined),
+        ),
+        FloatingActionButton(
+          onPressed: decreaseFn,
+          child: const Icon(Icons.exposure_minus_1_outlined),
+        ),
+      ],
     );
   }
 }
